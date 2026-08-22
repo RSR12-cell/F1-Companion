@@ -4,13 +4,13 @@ export type Drivers = {
     last_name: string,
     team_id: string,
     number: number,
-    image_url: string
+    image_url?: string
 }
 
 export type Team = {
     id: string;
     name: string;
-    logo_url: string;
+    logo_url?: string;
 }
 
 export type Tracks = {
@@ -18,7 +18,7 @@ export type Tracks = {
     name: string,
     location: string,
     distance: number,
-    track_image_url: string
+    track_image_url?: string
 }
 
 export type Predictions = {
