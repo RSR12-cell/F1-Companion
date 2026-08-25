@@ -4,6 +4,8 @@ import "./globals.css";
 import SideBar from "./ui/sidebar";
 import Logo from "./ui/logo";
 import React from "react";
+import InteractiveBode from "./ui/InteractiveBody";
+import InteractiveBody from "./ui/InteractiveBody";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,20 +28,14 @@ export default function RootLayout({ children }:  {children: React.ReactNode;}) 
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full min-w-full gap-2.5 flex flex-col items-center p-3.5 bg-black ">
+      <body className="min-h-screen min-w-screen bg-background ">
         
-          <div className="w-full flex items-start justify-between">
-            <Logo/>
-            {/* This is  */}
-            {/* <span className="text-text">account info</span> */}
-          </div>
+          <InteractiveBody logo={<Logo/>} sideBar={<SideBar/>}>
+            {children}
+          </InteractiveBody>
         
-      <div className="flex flex-1 gap-5 flex-row w-full pr-2.5">
-        <SideBar />
-        {children}
-      </div>
-      
     </body>
     </html >
   );
 }
+

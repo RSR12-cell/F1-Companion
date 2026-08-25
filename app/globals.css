@@ -22,7 +22,7 @@
 @media (prefers-color-scheme: dark){
   :root{
     --background: var(--color-mist-950);
-    --foreground: var(--color-mist-700);
+    --foreground: var(--color-mist-900);
     --text-color: var(--color-mist-100);
   }
 }

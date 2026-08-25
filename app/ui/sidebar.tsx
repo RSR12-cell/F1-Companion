@@ -17,8 +17,8 @@ export default function sideBar() {
     ]
 
     return (
-        <div className="my-2.5 bg-foreground text-text  w-45 rounded-r-3xl py-15  shadow-lime-400 transition-shadow duration-300 ease-in-out hover:shadow-[6px_0px_20px] " >
-            <nav className="flex flex-col justify-between text-text h-full items-center w-full gap-1">
+        <div className="my-2.5  bg-foreground text-text h-full  w-45  mt-0  transition-shadow duration-300 ease-in-out " >
+            <nav className="flex flex-col justify-around text-text h-full items-center w-full gap-2 ">
                 {
                     linkMap.map((obj, i) => (createLink(obj.href, obj.image_name, obj.text, i)))
                 }
