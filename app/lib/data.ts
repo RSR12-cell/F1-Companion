@@ -3,14 +3,24 @@ import { Team } from "./definitions";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
-async function fetchTeams() {
+const items_per_page = 4;
+async function fetchTeams(currentPage: number) {
+  const offset = (currentPage - 1) * items_per_page;
   const teams = await sql<Team[]>`
         SELECT *
         FROM teams
-        LIMIT 11;
+        LIMIT ${items_per_page}
+        OFFSET ${offset}
     `;
 
   return teams;
 }
 
-export { fetchTeams };
+async function fetchTeamCount() {
+  const total = await sql<{ team_count: number }[]>`
+    SELECT COUNT(*) AS team_count from teams;
+  `;
+
+  return total[0];
+}
+export { fetchTeams, fetchTeamCount };

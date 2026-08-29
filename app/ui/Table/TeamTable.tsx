@@ -1,8 +1,12 @@
 import { fetchTeams } from "@/app/lib/data";
 import Image from "next/image";
 
-export default async function TeamTable() {
-  const teams = await fetchTeams();
+export default async function TeamTable({
+  currentPage,
+}: {
+  currentPage: number;
+}) {
+  const teams = await fetchTeams(currentPage);
   return (
     <table className="bg-background w-full border-separate border-spacing-3 rounded-2xl border border-mist-800">
       <thead>
@@ -29,8 +33,8 @@ export default async function TeamTable() {
                 <Image
                   alt={`${t.name} logo`}
                   src={`${t.logo_url ?? ""}.png`}
-                  width={60}
-                  height={60}
+                  width={50}
+                  height={50}
                   className="h-auto max-h-full w-auto max-w-full"
                 ></Image>
               </div>
@@ -44,12 +48,3 @@ export default async function TeamTable() {
     </table>
   );
 }
-
-// <tr>
-// <td className="bg-foreground rounded-lg border border-mist-600 py-1 text-center text-sm">
-//   Image Here
-// </td>
-// <td className="bg-foreground rounded-lg border border-mist-600 py-1 text-center text-sm">
-//   Team Name Here
-// </td>
-// </tr>

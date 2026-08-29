@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SideBar from "./ui/navBarLinks";
 import Logo from "./ui/logo";
@@ -8,15 +8,15 @@ import InteractiveBode from "./ui/InteractiveBody";
 import InteractiveBody from "./ui/InteractiveBody";
 import Header from "./ui/Header/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "F1 Compainion",
@@ -29,13 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`h-full antialiased`}>
+      {/* ${geistSans.variable} ${geistMono.variable} */}
       <body className="bg-background flex min-h-screen min-w-screen flex-col gap-9">
         <Header></Header>
-        <div className="bg-foreground mx-5 my-2.5 mt-0 h-[90vh] flex-1 rounded-2xl p-3 text-(--color-text)">
+        <div className="bg-foreground mx-5 my-2.5 mt-0 flex-1 rounded-2xl p-3 text-(--color-text)">
           {children}
         </div>
       </body>
