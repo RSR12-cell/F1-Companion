@@ -23,7 +23,6 @@ export default function TeamTableSuspense() {
         <TeamTableSuspenseCell />
         <TeamTableSuspenseCell />
         <TeamTableSuspenseCell />
-        <TeamTableSuspenseCell />
       </tbody>
     </table>
   );

@@ -19,7 +19,7 @@ export default async function Home(props: {
         <TeamTable currentPage={Number(pageNumber)} />
       </Suspense>
       <Pagination
-        totalPages={Math.ceil(teamCount.team_count / 4)}
+        totalPages={Math.ceil(teamCount.team_count / 3)}
         currentPage={pageNumber}
       />
     </div>
