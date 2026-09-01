@@ -28,6 +28,7 @@ export default function SearchBar({ placeHolder }: { placeHolder: string }) {
       </label>
       <input
         type="text"
+        defaultValue={params.get("query")?.toString()}
         className="bg-foreground text-text isolate h-full w-full rounded-2xl px-3 pl-10 text-sm outline-0 peer-focus:text-gray-400 placeholder:text-gray-500 focus:outline-1 focus:outline-slate-600"
         placeholder={placeHolder}
         onChange={(e) => handleOnSearch(e.target.value)}

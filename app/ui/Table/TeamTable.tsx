@@ -3,10 +3,12 @@ import Image from "next/image";
 
 export default async function TeamTable({
   currentPage,
+  teamName,
 }: {
   currentPage: number;
+  teamName: string;
 }) {
-  const teams = await fetchTeams(currentPage);
+  const teams = await fetchTeams(currentPage, teamName);
   return (
     <table className="bg-background w-full border-separate border-spacing-3 rounded-2xl border border-mist-800">
       <thead>
