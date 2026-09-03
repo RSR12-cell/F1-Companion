@@ -23,7 +23,7 @@ export default function Pagination({
     return `${pathname}?${searchParam.toString()}`;
   };
   return (
-    <div className="bg-background flex w-fit flex-row items-center justify-around gap-7 rounded-2xl px-5 py-4">
+    <div className="bg-background flex w-[60%] flex-row items-center justify-around gap-7 rounded-2xl px-5 py-4">
       <PaginationArrow
         direction="left"
         enabled={currentPage - 1 > 0}

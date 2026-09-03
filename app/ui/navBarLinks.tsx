@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 export default function navBarLinks(currentPath: string) {
-  let linkMap: { href: string; image_name: string; text: string }[] = [
+  const linkMap: { href: string; image_name: string; text: string }[] = [
     { href: "/teams", image_name: "teams", text: "Teams" },
     { href: "/racers", image_name: "racers", text: "Racers" },
     { href: "/tracks", image_name: "tracks", text: "Tracks" },

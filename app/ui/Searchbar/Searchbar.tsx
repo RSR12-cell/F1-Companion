@@ -13,6 +13,7 @@ export default function SearchBar({ placeHolder }: { placeHolder: string }) {
 
     if (term) {
       searchParam.set("query", term);
+      searchParam.delete("page");
       const path = `${pathName}?${searchParam.toString()}`;
       replace(path);
     } else {

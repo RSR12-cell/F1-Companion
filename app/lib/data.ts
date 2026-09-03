@@ -1,5 +1,5 @@
 import postgres from "postgres";
-import { Team } from "./definitions";
+import { DriversTable, Team } from "./definitions";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
@@ -24,4 +24,14 @@ async function fetchTeamCount(teamName: string) {
   `;
   return total[0];
 }
-export { fetchTeams, fetchTeamCount };
+
+async function fetchFiliteredDrivers() {
+  const drivers = await sql<DriversTable[]>`
+  SELECT d.first_name, d.last_name, d.number, d.image_url, t.name AS team_name, t.logo_url AS team_logo
+  FROM drivers d
+  INNER JOIN teams t ON t.id = d.team_id;
+  `;
+  return drivers;
+}
+
+export { fetchTeams, fetchTeamCount, fetchFiliteredDrivers };
