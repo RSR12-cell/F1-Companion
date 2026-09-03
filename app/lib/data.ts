@@ -25,11 +25,15 @@ async function fetchTeamCount(teamName: string) {
   return total[0];
 }
 
-async function fetchFiliteredDrivers() {
+async function fetchFiliteredDrivers(query: string) {
   const drivers = await sql<DriversTable[]>`
   SELECT d.first_name, d.last_name, d.number, d.image_url, t.name AS team_name, t.logo_url AS team_logo
   FROM drivers d
-  INNER JOIN teams t ON t.id = d.team_id;
+  INNER JOIN teams t ON t.id = d.team_id
+  WHERE first_name ILIKE ${`%${query}%`} OR 
+        last_name ILIKE ${`%${query}%`} OR
+        number::TEXT ILIKE ${`%${query}%`} OR
+        t.name ILIKE ${`%${query}%`};
   `;
   return drivers;
 }

@@ -1,11 +1,17 @@
 import { fetchFiliteredDrivers } from "@/app/lib/data";
 import Card from "../../Card/card";
 import Image from "next/image";
+import { Tangerine } from "next/font/google";
 
-export default async function DriverCardHolder() {
-  const drivers = await fetchFiliteredDrivers();
+const numberFont = Tangerine({
+  weight: "700",
+});
+
+export default async function DriverCardHolder({ query }: { query: string }) {
+  const drivers = await fetchFiliteredDrivers(query);
+  console.log(query);
   return (
-    <div className="border-background grid h-fit w-full grid-cols-3 gap-4 overflow-y-auto rounded-2xl border-2 p-3">
+    <div className="border-background scrollbar-track-background scrollbar-thumb-foreground scrollbar-wid grid h-[50vh] w-full grid-cols-2 items-center gap-4 overflow-y-scroll rounded-2xl border-2 p-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {drivers.map((d, index) => (
         <Card
           title={`${d.first_name} ${d.last_name}`}
@@ -45,7 +51,9 @@ function DriverExtraDetails({
         />
         <span className="text-center font-sans text-sm italic">{teamName}</span>
       </div>
-      <div className="flex flex-1 items-center justify-center">
+      <div
+        className={`flex flex-1 items-center justify-center text-2xl ${numberFont.className}`}
+      >
         {driverNumber}
       </div>
     </div>
