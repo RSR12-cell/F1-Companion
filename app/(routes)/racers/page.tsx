@@ -1,5 +1,7 @@
 import DriverCardHolder from "@/app/ui/Driver/Driver-Card-Holder/DriverCardHolder";
+import DriverCardHolderSkeleton from "@/app/ui/Driver/Driver-Card-Holder/DriverCardHolderSkeleton";
 import SearchBar from "@/app/ui/Searchbar/Searchbar";
+import { Suspense } from "react";
 
 export default async function Home(props: {
   searchParams?: Promise<{ query?: string }>;
@@ -9,7 +11,9 @@ export default async function Home(props: {
   return (
     <div className="bg-foreground col my-2.5 flex flex-1 flex-col items-center justify-center gap-10 rounded-2xl p-3 text-(--color-text)">
       <SearchBar placeHolder="Find drivers ..." />
-      <DriverCardHolder query={query} />
+      <Suspense key={query} fallback={<DriverCardHolderSkeleton />}>
+        <DriverCardHolder query={query} />
+      </Suspense>
     </div>
   );
 }

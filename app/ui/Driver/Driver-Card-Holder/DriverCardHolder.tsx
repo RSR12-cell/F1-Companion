@@ -9,7 +9,6 @@ const numberFont = Tangerine({
 
 export default async function DriverCardHolder({ query }: { query: string }) {
   const drivers = await fetchFiliteredDrivers(query);
-  console.log(query);
   return (
     <div className="border-background scrollbar-track-background scrollbar-thumb-foreground scrollbar-wid grid h-[50vh] w-full grid-cols-2 items-center gap-4 overflow-y-scroll rounded-2xl border-2 p-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {drivers.map((d, index) => (
